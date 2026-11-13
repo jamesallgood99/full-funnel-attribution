@@ -1,0 +1,12 @@
+{
+  "name": "full-funnel-attribution",
+  "private": true,
+  "type": "module",
+  "description": "Multi-touch attribution for B2B marketing: channels, collateral, PLG and postsale.",
+  "scripts": {
+    "generate": "python3 generator/generate.py",
+    "test": "node tests/engine.test.mjs",
+    "serve": "python3 -m http.server 8000 -d docs"
+  },
+  "license": "MIT"
+}
