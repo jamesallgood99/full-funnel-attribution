@@ -12,6 +12,30 @@
 <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+<!-- Project ribbon: cross-links James Allgood's open-source GTM tools. -->
+<style>
+  .ja-ribbon { box-sizing: border-box; height: 36px; display: flex; align-items: center; gap: 18px; padding: 0 24px; background: #15181e; color: #f3f4f6; font: 13px/1 "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif; overflow-x: auto; white-space: nowrap; }
+  .ja-ribbon .ja-who { font-weight: 600; color: #f3f4f6; opacity: 1; margin-right: 6px; }
+  .ja-ribbon nav { display: flex; gap: 16px; }
+  .ja-ribbon a { color: #f3f4f6; opacity: 0.75; text-decoration: none; }
+  .ja-ribbon a:hover, .ja-ribbon a:focus-visible { opacity: 1; text-decoration: underline; }
+  .ja-ribbon a[aria-current="page"] { opacity: 1; font-weight: 600; padding-bottom: 3px; border-bottom: 2px solid #7f98ff; }
+  .ja-ribbon .ja-gh { margin-left: auto; }
+  .ja-ribbon .ja-tour { font: inherit; color: #fff; background: #2a78d6; border: 0; border-radius: 3px; padding: 5px 10px; font-weight: 600; cursor: pointer; }
+  .ja-ribbon .ja-tour:hover, .ja-ribbon .ja-tour:focus-visible { background: #3987e5; }
+  @media print { .ja-ribbon { display: none; } }
+</style>
+<div class="ja-ribbon" role="navigation" aria-label="James Allgood's projects">
+  <a class="ja-who" href="https://jamesallgood.com/ai-skills.html">James Allgood</a>
+  <nav>
+    <a href="https://jamesallgood99.github.io/gtm-simulator/">GTM Simulator</a>
+    <a href="https://jamesallgood99.github.io/competitive-intel-tracker/">Competitive Intel Tracker</a>
+    <a href="https://jamesallgood99.github.io/acme-prospecting-agents/">Prospecting Agents</a>
+    <a href="https://jamesallgood99.github.io/full-funnel-attribution/" aria-current="page">Full-Funnel Attribution</a>
+  </nav>
+  <a class="ja-gh" href="https://github.com/jamesallgood99/full-funnel-attribution">View source on GitHub</a>
+  <button class="ja-tour" type="button" data-tour-open>Take the tour</button>
+</div>
 <header class="masthead">
   <div class="brand">
     <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span><span></span></div>

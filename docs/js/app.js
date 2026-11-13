@@ -1,6 +1,7 @@
 import { createEngine, STAGES, STAGE, MODELS, STATUS } from "./engine.js";
 import { hbar, heatStyle, quadrant, bindTooltips, esc } from "./charts.js";
 import { buildDeck } from "./deck.js";
+import { startTour } from "./tour.js";
 
 const $ = (s, r = document) => r.querySelector(s);
 const view = $("#view");
@@ -43,6 +44,7 @@ async function init() {
   $("#controls").addEventListener("submit", (e) => e.preventDefault());
   addEventListener("hashchange", route);
   route();
+  startTour(E);
 }
 
 function route() {

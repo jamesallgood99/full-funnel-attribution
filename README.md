@@ -4,6 +4,8 @@ Multi-touch attribution for B2B marketing teams that need to know which channels
 
 **Live demo:** https://jamesallgood99.github.io/full-funnel-attribution/
 
+A five-step tour opens on your first visit; add `?tour` to the URL to open it again.
+
 ## What it answers
 
 - **Which channels create pipeline and revenue, and at what cost?** Seven attribution models run side by side: first touch, last touch, linear, time decay, U-shaped, W-shaped and a data-driven Markov model. They cover MQL, PQL, SQL, Opportunity, Closed-won, Renewal, Upsell and Expansion.
