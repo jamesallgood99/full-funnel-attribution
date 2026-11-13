@@ -77,11 +77,22 @@ export function quadrant(items, { width = 860, height = 420, medianReach, liftCu
   s += q(pad.l + W - 4, pad.t + H - 8, "end", "Fix or replace", "var(--warn-ink)");
   s += q(pad.l + 6, pad.t + H - 8, "start", "Kill", "var(--crit-ink)");
   const sorted = [...items].sort((a, b) => b.reach - a.reach);
+  const placed = []; // label boxes, to keep labels from colliding
+  let labels = "";
   for (const d of sorted) {
     const cx = x(d.reach), cy = y(d.lift);
     s += `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="7" fill="${STATUS_FILL[d.status]}" stroke="var(--surface)" stroke-width="2" tabindex="0" data-tip="${esc(d.tip)}" style="cursor:default"/>`;
-    if (d.label) s += `<text class="lbl" x="${(cx + 11).toFixed(1)}" y="${(cy + 4).toFixed(1)}" ${cx > pad.l + W * 0.78 ? `text-anchor="end" dx="-22"` : ""}>${esc(d.label)}</text>`;
+    if (!d.label) continue;
+    const w = d.label.length * 6.2, prefLeft = cx > pad.l + W * 0.62;
+    const hits = (xx, yy) => placed.some((r) => xx < r.x1 && xx + w > r.x0 && yy - 11 < r.y1 && yy + 3 > r.y0);
+    // try beside the dot on the preferred side, then the other side, then nudged up or down
+    const cands = [];
+    for (const dy of [0, 12, -12, 22, -22]) for (const lft of [prefLeft, !prefLeft]) cands.push([lft ? cx - 11 - w : cx + 11, cy + 4 + dy]);
+    const [x0, ly] = cands.find(([xx, yy]) => !hits(xx, yy)) || cands[0];
+    placed.push({ x0, x1: x0 + w, y0: ly - 11, y1: ly + 3 });
+    labels += `<text class="lbl" x="${x0.toFixed(1)}" y="${ly.toFixed(1)}">${esc(d.label)}</text>`;
   }
+  s += labels;
   return s + `</svg>`;
 }
 function niceTicks(max) {
